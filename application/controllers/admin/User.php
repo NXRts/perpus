@@ -27,8 +27,8 @@ class User extends CI_Controller {
 
 	public function edit($user_id){
 		$this->db->from('user');
-		$this->db->where('user_id', $user_id);  // Mengambil data berdasarkan user_id
-		$user = $this->db->get()->row();  // Mengambil satu baris data
+		$this->db->where('user_id', $user_id);
+		$user = $this->db->get()->row(); 
 		$data = array(
 			'judul' => 'Edit User',
 			'user'  => $user,
@@ -76,11 +76,7 @@ class User extends CI_Controller {
 			'user_id' => $this->input->post('user_id')
 		);
 		$this->db->update('user',$data, $where);
-		$this->session->set_flashdata('notifikasi','
-		<div class="alert alert-success alert-dismissible" role="alert">
-			Berhasil Disimpan!
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-		</div>');
+		$this->session->set_flashdata('notifikasi','---');
 		redirect('admin/user');
 	}
 
